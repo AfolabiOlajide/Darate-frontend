@@ -1,1 +1,1 @@
-# Next Boilerplate
+# Darate Crowdfunding application
