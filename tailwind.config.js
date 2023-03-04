@@ -6,7 +6,22 @@ module.exports = {
     './app/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    screens: {
+      sm: "480px",
+      md: "768px",
+      lg: "976px",
+      xl: "1440px"
+    },
+    extend: {
+      colors: {
+        primary: "#1FC39E",
+        ash: "#2B2B2B",
+        yello: "#FAF2B1",
+        blu: "#1EC49E",
+        purp: "#F4E5F6",
+        orang: "#FAF2B1"
+      }
+    },
   },
   plugins: [],
 }

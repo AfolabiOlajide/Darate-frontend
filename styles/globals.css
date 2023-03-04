@@ -1,3 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Philosopher:wght@400;700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+html{
+    scroll-behavior: smooth;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'DM Sans', sans-serif;
+}
+
+.heading{
+    font-family: 'Philosopher', sans-serif;
+}
+
+/* 
+    font-family: 'DM Sans', sans-serif;
+    font-family: 'Philosopher', sans-serif;
+*/
