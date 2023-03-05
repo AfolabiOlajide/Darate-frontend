@@ -64,7 +64,7 @@ const CreateCampaign = () => {
             <form onSubmit={handleSubmit} className="w-full mt-[65px] flex flex-col gap-[30px]">
                 {/* Campaign type */}
                 <div className="flex-1 flex flex-col">
-                    <span className='font-medium text-[14px] leading-[22px] text-[#808191] mb-[10px]'>Campaign Type <span className='text-red-400'>*</span></span>
+                    <span className='font-medium text-[14px] leading-[22px] text-[#808191] mb-[10px]'>Campaign Type <span className='text-red-400'>*</span> (you can only have one creator campaign, read FAQ to learn more)</span>
                     <select name="Campaign type" placeholder='Category' className='flex-1 py-[15px] sm:px-[25px] px-[15px] outline-none border-[1px] border-[#3a3a43] bg-transparent text-[#4b5264] text-[14px] placeholder:text-[#4b5264] rounded-[10px] sm:min-w-[300px]' id="" onChange={(e) => handleCampaignType( e)}>
                         <option className='text-black' value="normal">Normal Campaign</option>
                         <option className='text-black' value="creator">Creator</option>
@@ -97,8 +97,8 @@ const CreateCampaign = () => {
                     </div>}
                 </div>
                 <FormField 
-                    labelName="Story"
-                    placeholder="Write your story"
+                    labelName="Description"
+                    placeholder="Write a description of your campaign"
                     isTextArea
                     value={form.description}
                     handleChange={(e) => handleFormFieldChange("description", e)}
