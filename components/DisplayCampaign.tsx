@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { NormalCampaignProp } from '../utils';
+import { RotateSpinner } from "react-spinners-kit";
 
 import FundCard from './FundCard';
 // import { loader } from '../assets';
@@ -26,7 +27,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }: DisplayCampaignProps)
         <div className="flex flex-wrap mt-[20px] gap-[26px]">
             {isLoading && (
             // <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
-            <p>Loading</p>
+            <RotateSpinner size={60} color="#1EC49E" loading={isLoading} />
             )}
 
             {!isLoading && campaigns.length === 0 && (

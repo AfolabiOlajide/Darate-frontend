@@ -6,11 +6,13 @@ import { BiMoneyWithdraw } from "react-icons/bi"
 import { useAppContext } from '../context';
 import { CustomButton, FormField } from '../components';
 import { checkIfImage } from "../utils"
+import Loader from '../components/Loader';
+import { toast } from 'react-toastify';
 
 const CreateCampaign = () => {
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false);
-    const { createCampaign, createCreatorCampaign } = useAppContext();
+    const { address, createCampaign, createCreatorCampaign } = useAppContext();
     const [form, setForm] = useState({
         name: "",
         title: "",
@@ -29,6 +31,10 @@ const CreateCampaign = () => {
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
 
+        if(!address){
+            return toast.warn("Please Connect your wallet");
+        }
+
         checkIfImage(form.image, async(exists) => {
             if(exists){
                 setIsLoading(true);
@@ -38,7 +44,7 @@ const CreateCampaign = () => {
                     await createCreatorCampaign({ ...form})
                 }
                 setIsLoading(false);
-                router.push('/');
+                router.push('/profile');
             }else{
                 alert("provide a valid Image url");
                 setForm({...form, image: ""});
@@ -55,7 +61,7 @@ const CreateCampaign = () => {
 
     return (
         <div className='bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4'>
-            { isLoading && "loader" }
+            { isLoading && <Loader text='Transaction in progress' /> }
             <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-blu rounded-[10px]">
                 <h1 className="heading font-bold sm:text-[25px] text-[18px] leading-[38px] text-black">Start a Campaign</h1>
             </div>
@@ -111,7 +117,7 @@ const CreateCampaign = () => {
                 {CampaignType === "normal" && <div className="flex flex-wrap gap-[40px]">
                     <FormField 
                         labelName="Goal"
-                        placeholder="Eth 0.50"
+                        placeholder="FTM 0.50"
                         inputType="text"
                         value={form.target}
                         handleChange={(e) => handleFormFieldChange("target", e)}

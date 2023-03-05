@@ -2,6 +2,7 @@
 import React from 'react';
 import { useRouter } from 'next/router';
 import { CreatorCampignProp } from '../utils';
+import { RotateSpinner } from "react-spinners-kit";
 
 import CreatorFundCard from './CreatorFundCard';
 // import { loader } from '../assets';
@@ -16,7 +17,7 @@ const DisplayCreatorCampaigns = ({ title, isLoading, campaigns }: DisplayCampaig
     const router = useRouter();
 
     const handleNavigate = (campaign: CreatorCampignProp) => {
-        router.push(`/campaignDetails/${campaign.pId}`)
+        router.push(`/creatorDetails/${campaign.pId}`)
     }
     
     return (
@@ -26,7 +27,7 @@ const DisplayCreatorCampaigns = ({ title, isLoading, campaigns }: DisplayCampaig
         <div className="flex flex-wrap mt-[20px] gap-[26px]">
             {isLoading && (
             // <img src={loader} alt="loader" className="w-[100px] h-[100px] object-contain" />
-            <p>Loading</p>
+            <RotateSpinner size={60} color="#1EC49E" loading={isLoading} />
             )}
 
             {!isLoading && campaigns.length === 0 && (

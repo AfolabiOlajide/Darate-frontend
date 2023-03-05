@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react'
 import DisplayCampaigns from '../../components/DisplayCampaign';
 import DisplayCreatorCampaigns from '../../components/DisplayCreatorCampaigns';
 import { useAppContext } from '../../context';
+import { RotateSpinner } from "react-spinners-kit";
+import Loader from '../../components/Loader';
 
 const AllCampaigns = () => {
     const [ isLoading, setIsLoading ] = useState(false);
@@ -28,7 +30,7 @@ const AllCampaigns = () => {
     return (
         <div>
 
-            {isLoading && <p>loading.......</p>}
+            {isLoading && <Loader text='Fetching Campaigns' />}
             <div className="flex flex-col gap-[3rem]">
             <DisplayCampaigns 
             title="All Campaigns"
