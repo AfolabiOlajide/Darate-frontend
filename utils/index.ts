@@ -7,6 +7,23 @@ export interface ComponentProps {
     children?: React.ReactNode,
 }
 
+export interface CreatorCampignProp {
+    owner: string,
+    name?: string,
+    description: string,
+    amountCollected: string,
+    image: string,
+    pId: number,
+    handleClick?: () => void
+}
+
+export type NormalCampaignProp = CreatorCampignProp & {
+    category: string,
+    title: string,
+    target: string,
+    deadline: number,
+}
+
 
 
 

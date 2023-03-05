@@ -15,7 +15,7 @@ const CreateCampaign = () => {
         name: "",
         title: "",
         description: "",
-        category: "",
+        category: "HealthCare",
         deadline: "",
         target: "",
         image: "",

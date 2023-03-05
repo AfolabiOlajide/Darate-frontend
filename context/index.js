@@ -54,6 +54,7 @@ export const AppContextProvider = ({ children }) => {
         owner: campaign.owner,
         title: campaign.title,
         description: campaign.description,
+        category: campaign.category,
         target: ethers.utils.formatEther(campaign.targetAmount.toString()),
         deadline: campaign.deadline.toNumber(),
         amountCollected: ethers.utils.formatEther(campaign.amountCollected.toString()),
@@ -64,8 +65,31 @@ export const AppContextProvider = ({ children }) => {
         return parsedCampaings;
     }
 
+    const getCreatorCampaigns = async () => {
+        const campaigns = await contract.call('getCreatorCampaigns');
+
+        const parsedCampaings = campaigns.map((campaign, i) => ({
+        owner: campaign.owner,
+        name: campaign.name,
+        description: campaign.description,
+        amountCollected: ethers.utils.formatEther(campaign.amountCollected.toString()),
+        image: campaign.image,
+        pId: i
+        }));
+
+        return parsedCampaings;
+    }
+
     const getUserCampaigns = async () => {
         const allCampaigns = await getCampaigns();
+
+        const filteredCampaigns = allCampaigns.filter((campaign) => campaign.owner === address);
+
+        return filteredCampaigns;
+    }
+
+    const getUserCreatorCampaigns = async () => {
+        const allCampaigns = await getCreatorCampaigns();
 
         const filteredCampaigns = allCampaigns.filter((campaign) => campaign.owner === address);
 
@@ -105,7 +129,9 @@ export const AppContextProvider = ({ children }) => {
             createCampaign: publishCampaign,
             createCreatorCampaign: publishCreatorCampaign,
             getCampaigns,
+            getCreatorCampaigns,
             getUserCampaigns,
+            getUserCreatorCampaigns,
             donate,
             getDonations
         }}

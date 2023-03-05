@@ -1,8 +1,12 @@
 import React from 'react'
 
 const CampaignDetails = () => {
+    
+
     return (
-        <div>CampaignDetails</div>
+        <div>
+            CampaignDetails
+        </div>
     )
 }
 

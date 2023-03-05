@@ -19,7 +19,10 @@ module.exports = {
         yello: "#FAF2B1",
         blu: "#1EC49E",
         purp: "#F4E5F6",
-        orang: "#FAF2B1"
+        orang: "#FAF2B1",
+        health: "#FEDEFF",
+        nature: "#E3ACF9",
+        tech: "#B9F3FC"
       }
     },
   },

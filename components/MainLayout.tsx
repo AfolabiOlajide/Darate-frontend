@@ -11,7 +11,6 @@ import { BsSun } from "react-icons/bs"
 import Link from 'next/link';
 
 import { useAppContext } from '../context';
-import CustomButton from './CustomButton';
 
 const MainLayout = ({children}: ComponentProps) => {
     const { address, connect } = useAppContext()
@@ -36,18 +35,11 @@ const MainLayout = ({children}: ComponentProps) => {
                             <span className={`md:text-[1rem] lg:text-[1.5rem] heading ${router.asPath === "/profile" ? "text-blu" : "text-slate-500"}`}>Profile</span>
                         </Link>
                     </div>
-                    <div className="btn block bg-blu p-2 rounded-md">
-                        <span className='text-black md:text-[1rem] lg:text-[1.5rem]' onClick={() => {
+                    <div className="btn block bg-blu p-2 rounded-md cursor-pointer" onClick={() => {
                             if(address) return
                             else connect()
-                        }}>{address ? truncateEthAddress(address) : "Connect Wallet"}</span>
-
-                    {/* <CustomButton btnType="button" title={address ? address : "connect wallet"}
-                    styles={address ? "bg-[#1dc071]" : "bg-[#8c6dfd]"} 
-                    handleClick={() => {
-                        if(address) return
-                        else connect()
-                    }}/> */}
+                        }}>
+                        <span className='text-black heading font-bold md:text-[1rem] lg:text-[1.5rem]'>{address ? truncateEthAddress(address) : "Connect Wallet"}</span>
                     </div>
                 </div>
                 {children}

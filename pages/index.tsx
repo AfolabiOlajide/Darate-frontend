@@ -18,7 +18,7 @@ const Home: NextPage = () => {
       <p className='mt-4 w-[80%] md:w-[50%]'>Support creators, Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptate, temporibus consectetur! Fugiat est suscipit tempora non quasi, ex quibusdam tenetur.</p>
       {/* categories */}
       <div className="categories mt-[4rem]">
-        <h2 className='text-2xl heading mb-[2rem]'>Select Category 🔥</h2>
+        <h2 className='text-2xl heading mb-[2rem]'>Select Campaign Category 🔥</h2>
         <div className="first grid grid-cols-1 md:grid-cols-[60%_38%] gap-4 mb-[2rem]">
           {/* education */}
           <div className="education relative bg-orang rounded-3xl h-[20vh] md:h-[30vh] overflow-hidden">
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
             <h4 className='text-black heading text-3xl font-bold absolute bottom-[10%] left-[5%]'>Nature</h4>
           </div>
           {/* health */}
-          <div className="education relative bg-[#FEDEFF] rounded-3xl h-[20vh] md:h-[30vh] overflow-hidden">
+          <div className="education relative bg-health rounded-3xl h-[20vh] md:h-[30vh] overflow-hidden">
             <h4 className='text-black heading text-3xl font-bold absolute bottom-[10%] left-[5%]'>HealthCare</h4>
             <Image className="w-[50%] md:w-[60%] absolute bottom-0 -right-12" src={HealthImg} alt="" width={20}/>
           </div>
