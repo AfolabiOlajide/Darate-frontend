@@ -5,6 +5,7 @@ import { NormalCampaignProp } from '../utils';
 import { RotateSpinner } from "react-spinners-kit";
 
 import FundCard from './FundCard';
+import CustomButton from './CustomButton';
 // import { loader } from '../assets';
 
 interface DisplayCampaignProps {
@@ -31,9 +32,12 @@ const DisplayByCategory = ({ title, isLoading, campaigns }: DisplayCampaignProps
             )}
 
             {!isLoading && campaigns.length === 0 && (
-            <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
+            <div className="">
+                <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
                 No campaign has been created under this category
-            </p>
+                </p>
+                <CustomButton btnType='button' styles='bg-myPurple mt-[2rem]' title='Create a Campaign now' handleClick={() => router.push("/createCampaign")} />
+            </div>
             )}
 
             {!isLoading && campaigns.length > 0 && campaigns.map((campaign) => <FundCard 

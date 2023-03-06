@@ -24,3 +24,15 @@ body{
     font-family: 'DM Sans', sans-serif;
     font-family: 'Philosopher', sans-serif;
 */
+
+
+.remove-arrows::-webkit-outer-spin-button,
+.remove-arrows::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Firefox */
+.remove-arrows[type=number] {
+    -moz-appearance: textfield;
+}

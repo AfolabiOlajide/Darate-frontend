@@ -2,16 +2,14 @@ import React, { useState, useEffect } from 'react'
 import DisplayCampaigns from '../../components/DisplayCampaign';
 import DisplayCreatorCampaigns from '../../components/DisplayCreatorCampaigns';
 import { useAppContext } from '../../context';
-import { RotateSpinner } from "react-spinners-kit";
 import Loader from '../../components/Loader';
-import Link from 'next/link';
 import CategoryNav from '../../components/CategoryNav';
 
 const AllCampaigns = () => {
     const [ isLoading, setIsLoading ] = useState(false);
     const [campaigns, setCampaigns] = useState([]);
     const [creatorCampaigns, setCreatorCampaigns] = useState([]);
-    const { address, contract, getCampaigns, getCreatorCampaigns } = useAppContext();
+    const { contract, getCampaigns, getCreatorCampaigns } = useAppContext();
 
     const fetchCampaigns = async () => {
         setIsLoading(true);

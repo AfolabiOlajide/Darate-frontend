@@ -5,7 +5,6 @@ import { useAppContext } from '../../context';
 import DisplayByCategory from '../../components/DisplayByCategory';
 import { NormalCampaignProp } from '../../utils';
 import Loader from '../../components/Loader';
-import CategoryNav from '../../components/CategoryNav';
 import { FiArrowLeft } from 'react-icons/fi';
 
 const CampaignCategory = () => {
@@ -13,16 +12,20 @@ const CampaignCategory = () => {
     const { category } = router.query
     const [ isLoading, setIsLoading ] = useState(false);
     const [campaigns, setCampaigns] = useState([]);
-    const { address, contract, getCampaigns } = useAppContext();
+    const { contract, getCampaigns } = useAppContext();
 
     console.log(category)
 
     const fetchCampaigns = async () => {
         setIsLoading(true);
         const data = await getCampaigns();
-        if(category == "all") setCampaigns(data);
-        const filteredData = data.filter((campaign: NormalCampaignProp) => campaign.category === category);
-        setCampaigns(filteredData);
+        if(category === "all"){
+            setCampaigns(data)
+        }else{
+            const filteredData = data.filter((campaign: NormalCampaignProp) => campaign.category === category);
+            setCampaigns(filteredData);
+        }
+        
         setIsLoading(false);
     }
 
