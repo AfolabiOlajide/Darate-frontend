@@ -69,7 +69,7 @@ const Home: NextPage = () => {
       {/* Creator Section */}
       <h2 className='heading text-[2rem] md:text-[3rem] mt-[5rem]'>Let's aid you <br /> in providing Funds <br /> for your favourite <br /> <span className='bg-blu text-black block px-4 w-max text-[3rem] md:text-[4rem] rounded-md'>Creator</span></h2>
       <p className='mt-[3rem] w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'>Are you looking for a creator to help in their growth or you already have the <span className='text-blu'>id</span> of your favourite creator, begin exploring creators now.</p>
-      <CustomButton btnType='button' styles='bg- mt-[2rem]' title='Explore Creators' handleClick={() => router.push("/creators")} />
+      <CustomButton btnType='button' styles='shadow ml-[2rem] bg-dark mt-[2rem] text-base md:text-[1.4rem]' title='Explore Creators' handleClick={() => router.push("/creators")} />
       {/* faq */}
       <Faq />
     </div>

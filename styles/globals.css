@@ -36,3 +36,10 @@ body{
 .remove-arrows[type=number] {
     -moz-appearance: textfield;
 }
+
+
+.shadow{
+    box-shadow: 0 0 1rem #1EC49E,
+    0 0 2rem #1EC49E,
+    0 0 3rem #1EC49E;
+}
