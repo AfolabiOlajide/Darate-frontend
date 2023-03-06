@@ -117,8 +117,8 @@ const CreateCampaign = () => {
                 {CampaignType === "normal" && <div className="flex flex-wrap gap-[40px]">
                     <FormField 
                         labelName="Goal"
-                        placeholder="FTM 0.50"
-                        inputType="text"
+                        placeholder="FTM 20"
+                        inputType="number"
                         value={form.target}
                         handleChange={(e) => handleFormFieldChange("target", e)}
                     />

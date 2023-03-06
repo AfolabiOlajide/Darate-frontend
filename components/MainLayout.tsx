@@ -59,7 +59,7 @@ const MainLayout = ({children}: ComponentProps) => {
                         <TiUserOutline className={`text-[2rem] ${router.asPath === "/profile" ? "text-blu" : "text-slate-300"}`}/>
                     </Link>
                 </div>
-                <div className="justify-self-end">
+                {/* <div className="justify-self-end">
                     { isDark ? (
                         <div className="p-2 bg-ash/80 backdrop-blur-[2rem] rounded-md">
                             <BsSun className='text-[2rem] text-slate-300'/>
@@ -69,7 +69,7 @@ const MainLayout = ({children}: ComponentProps) => {
                             <BiMoon className='text-[2rem] text-black'/>
                         </div>
                     ) }
-                </div>
+                </div> */}
             </nav>
         </div>
     )

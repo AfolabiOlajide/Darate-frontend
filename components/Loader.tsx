@@ -7,7 +7,7 @@ interface LoaderProp{
 
 const Loader = ({ text }: LoaderProp) => {
     return (
-        <div className="fixed inset-0 z-10 h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center flex-col">
+        <div className="fixed inset-0 z-10 h-screen backdrop-blur-[.3rem] bg-[rgba(0,0,0,0.7)] flex items-center justify-center flex-col">
             <RotateSpinner size={150} color="#1EC49E" />
             <p className='text-[#959191] text-2xl mt-[2rem]'>{text}</p>
         </div>
@@ -15,3 +15,4 @@ const Loader = ({ text }: LoaderProp) => {
 }
 
 export default Loader
+
