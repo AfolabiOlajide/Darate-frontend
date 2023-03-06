@@ -55,14 +55,13 @@ const CampaignDetails = () => {
             image: filteredCampaign[0].image,
             pId: filteredCampaign[0].pId,
         });
-        console.log(filteredCampaign)
     }
 
     const fetchDonators = async () => {
-        const data = await getDonations(campaign.pId);
+        const data = await getDonations(id);
 
-        setDonators(data);
         console.log(data)
+        setDonators(data);
     }
 
     useEffect(() => {
