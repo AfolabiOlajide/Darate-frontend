@@ -4,6 +4,7 @@ import DisplayCreatorCampaigns from '../../components/DisplayCreatorCampaigns';
 import { useAppContext } from '../../context';
 import Loader from '../../components/Loader';
 import CategoryNav from '../../components/CategoryNav';
+import Head from 'next/head';
 
 const AllCampaigns = () => {
     const [ isLoading, setIsLoading ] = useState(false);
@@ -27,6 +28,10 @@ const AllCampaigns = () => {
 
     return (
         <div>
+            <Head>
+                <title>Darate | Campaigns</title>
+                <link rel="icon" href="../fantom-ftm-logo.svg" />
+            </Head>
             {/* category list */}
             <CategoryNav />
 

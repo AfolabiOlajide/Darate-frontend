@@ -4,6 +4,7 @@ import { useAppContext } from '../../context';
 import Loader from '../../components/Loader';
 import { CreatorCampignProp } from '../../utils';
 import DisplaySingleCreator from '../../components/DisplaySingleCreator';
+import Head from 'next/head';
 
 const Creators = () => {
     const [ isLoading, setIsLoading ] = useState(false);
@@ -38,6 +39,10 @@ const Creators = () => {
 
     return (
         <div>
+            <Head>
+                <title>Darate | Creators</title>
+                <link rel="icon" href="../fantom-ftm-logo.svg" />
+            </Head>
             {isLoading && <Loader text='Fetching Creators' />}
             <div className="search mb-[2rem] flex justify-center items-center w-full">
                 <input type="number" 

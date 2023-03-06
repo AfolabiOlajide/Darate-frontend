@@ -16,8 +16,8 @@ const Home: NextPage = () => {
   return (
     <div className="mb-[3rem]">
       <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
+        <title>Darate</title>
+        <link rel="icon" href="/fantom-ftm-logo.svg" />
       </Head>
 
       <h1 className='heading text-[2.7rem] md:text-[4rem]'>Hello, <br /> Are You Ready For <br /> <span className='bg-blu text-black block px-4 w-max text-[3rem] md:text-[4rem] rounded-md'>Crowdfunding?</span></h1>

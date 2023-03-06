@@ -4,6 +4,7 @@ import DisplayCampaigns from '../components/DisplayCampaign';
 import DisplayCreatorCampaigns from '../components/DisplayCreatorCampaigns';
 import { useAppContext } from '../context';
 import Loader from '../components/Loader';
+import Head from 'next/head';
 
 const Profile = () => {
     const router = useRouter()
@@ -29,6 +30,10 @@ const Profile = () => {
 
     return (
         <>
+            <Head>
+                <title>Darate | Profile</title>
+                <link rel="icon" href="/fantom-ftm-logo.svg" />
+            </Head>
             <div>
                 {isLoading && <Loader />}
                 <div className="flex flex-col gap-[3rem]">
