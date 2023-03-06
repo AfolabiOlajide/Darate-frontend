@@ -5,6 +5,7 @@ import { ComponentProps } from '../utils';
 import { BsGrid } from "react-icons/bs";
 import { TiUserOutline } from "react-icons/ti";
 import { GoMegaphone } from "react-icons/go";
+import { IoIosPeople } from "react-icons/io";
 import { FaPen } from "react-icons/fa";
 import Link from 'next/link';
 import { useNetworkMismatch, useDisconnect, } from "@thirdweb-dev/react";
@@ -82,6 +83,9 @@ const MainLayout = ({children}: ComponentProps) => {
                         </Link>
                         <Link href="/allCampaign" className={`p-2 ${router.asPath === "/allCampaign" && "bg-blu/20" } rounded-md`}>
                             <GoMegaphone className={`text-[2rem] ${router.asPath === "/allCampaign" ? "text-blu" : "text-slate-300"}`}/>
+                        </Link>
+                        <Link href="/creators" className={`p-2 ${router.asPath === "/creators" && "bg-blu/20" } rounded-md`}>
+                            <IoIosPeople className={`text-[2rem] ${router.asPath === "/creators" ? "text-blu" : "text-slate-300"}`}/>
                         </Link>
                         <Link href="/createCampaign" className={`p-2 ${router.asPath === "/createCampaign" && "bg-blu/20" } rounded-md`}>
                             <FaPen className={`text-[2rem] ${router.asPath === "/createCampaign" ? "text-blu" : "text-slate-300"}`}/>
