@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useNetworkMismatch, } from "@thirdweb-dev/react";
 import { FiArrowLeft } from "react-icons/fi"; 
+import { useNetworkMismatch, } from "@thirdweb-dev/react";
 // import { ethers } from 'ethers';
 
 import { useAppContext } from '../../context';
 import Loader from '../../components/Loader';
 import { CustomButton } from '../../components';
 import CountBox from '../../components/CountBox';
-import { calculateBarPercentage, daysLeft, NormalCampaignProp } from '../../utils';
+import { CreatorCampignProp } from '../../utils';
 import Pixel from "../../assets/pixel.png"
 import Image from 'next/image';
 import { toast } from 'react-toastify';
@@ -18,52 +18,47 @@ interface Donors{
     donation: string[]
 }
 
-const CampaignDetails = () => {
+const CreatorDetails = () => {
     const isMismatched = useNetworkMismatch();
     const router = useRouter()
     const { id } = router.query;
-    const { donate, getDonations, contract, address, getCampaigns } = useAppContext();
+    const { donateCreator, getCreatorDonations, contract, address, getCreatorCampaigns } = useAppContext();
 
     const [isLoading, setIsLoading] = useState(false);
     const [amount, setAmount] = useState('');
     const [donators, setDonators] = useState<Donors[]>([]);
-    const [ campaign, setCampaign ] = useState<NormalCampaignProp>({
+    const [ campaign, setCampaign ] = useState<CreatorCampignProp>({
         owner: "",
-        title: "",
+        name: "",
         description: "",
-        target: "",
-        category: "",
-        deadline: 0,
         amountCollected: "",
         image: "",
         pId: 0,
     });
 
-    const remainingDays = daysLeft(campaign.deadline);
-
     const fetchCampaign = async () => {
-        setIsLoading(true);
-        const data = await getCampaigns();
-        setIsLoading(false);
+        setIsLoading(true)
+        const data = await getCreatorCampaigns();
 
-        const filteredCampaign = data.filter((campaign: NormalCampaignProp) => campaign.pId.toString() == id);
+        const filteredCampaign = data.filter((campaign: CreatorCampignProp) => campaign.pId.toString() == id);
+        if(filteredCampaign.length === 0){
+            return router.push("/404")
+        }
         setCampaign({
-            owner: filteredCampaign[0].owner,
-            title: filteredCampaign[0].title,
-            description: filteredCampaign[0].description,
-            target: filteredCampaign[0].target,
-            category: filteredCampaign[0].category,
-            deadline: filteredCampaign[0].deadline,
-            amountCollected: filteredCampaign[0].amountCollected,
-            image: filteredCampaign[0].image,
-            pId: filteredCampaign[0].pId,
+            owner: filteredCampaign[0]?.owner,
+            name: filteredCampaign[0]?.name,
+            description: filteredCampaign[0]?.description,
+            amountCollected: filteredCampaign[0]?.amountCollected,
+            image: filteredCampaign[0]?.image,
+            pId: filteredCampaign[0]?.pId,
         });
+
+        setIsLoading(false)
     }
 
     const fetchDonators = async () => {
-        const data = await getDonations(id);
+        const data = await getCreatorDonations(id);
 
-        console.log(data)
         setDonators(data);
     }
 
@@ -81,7 +76,7 @@ const CampaignDetails = () => {
         }
         setIsLoading(true);
 
-        await donate(campaign.pId, amount); 
+        await donateCreator(campaign.pId, amount); 
 
         router.push(`/allCampaign`);
         setIsLoading(false);
@@ -96,15 +91,10 @@ const CampaignDetails = () => {
         <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">
             <div className="flex-1 flex-col">
             <img src={campaign.image} alt="campaign" className="w-full h-[410px] object-cover rounded-xl"/>
-            <div className="relative w-full h-[5px] bg-[#3a3a43] mt-[2rem]">
-                <div className="absolute h-full bg-blu" style={{ width: `${calculateBarPercentage(Number(campaign.target), Number(campaign.amountCollected))}%`, maxWidth: '100%'}}>
-                </div>
-            </div>
             </div>
 
             <div className="flex md:w-[150px] w-full flex-wrap justify-between gap-[30px]">
-            <CountBox title="Days Left" value={remainingDays} />
-            <CountBox title={`Raised of ${campaign.target}`} value={campaign.amountCollected} />
+            {address === campaign.owner && <CountBox title={`Total Raised`} value={campaign.amountCollected} />}
             <CountBox title="Total Backers" value={donators.length} />
             </div>
         </div>
@@ -112,7 +102,7 @@ const CampaignDetails = () => {
         <div className="mt-[60px] flex lg:flex-row flex-col gap-5">
             <div className="flex-[2] flex flex-col gap-[40px]">
             <div>
-                <h4 className="heading font-bold text-[2rem] text-white uppercase">{campaign.title}</h4>
+                <h4 className="heading font-bold text-[2rem] text-white uppercase">{campaign.name}</h4>
 
                 <div className="mt-[20px] flex flex-row items-center flex-wrap gap-[14px]">
                 <div className="w-[52px] h-[52px] flex items-center justify-center rounded-full bg-[#2c2f32] cursor-pointer">
@@ -166,8 +156,8 @@ const CampaignDetails = () => {
                 />
 
                 <div className="my-[20px] p-4 bg-[#13131a] rounded-[10px]">
-                    <h4 className="  font-semibold text-[14px] leading-[22px] text-white">Back it because you believe in it.</h4>
-                    <p className="mt-[20px]   font-normal leading-[22px] text-[#808191]">Support this campaign for no reward, just because it speaks to you.</p>
+                    <h4 className="  font-semibold text-[14px] leading-[22px] text-white">Back this creator because you believe in them.</h4>
+                    <p className="mt-[20px]   font-normal leading-[22px] text-[#808191]">Support their campaign for no reward, just because you appreciate what they do.</p>
                 </div>
 
                 <CustomButton 
@@ -184,4 +174,4 @@ const CampaignDetails = () => {
     )
 }
 
-export default CampaignDetails
+export default CreatorDetails

@@ -20,10 +20,12 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <h1 className='heading text-[3rem] md:text-[4rem]'>Hello, <br /> Ready For <br /> CrowdFunding?</h1>
-      <p className='mt-4 w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'><span className='text-blu'>Darate</span> is a crowdfunding platform that allows you to support your favorite creators or are you just looking to help those in need and support their campaign this is the right platform, built on the blockchain and fully powered by the Fantom Network.</p>
+      <h1 className='heading text-[2.7rem] md:text-[4rem]'>Hello, <br /> Are You Ready For <br /> <span className='bg-blu text-black block px-4 w-max text-[3rem] md:text-[4rem] rounded-md'>Crowdfunding?</span></h1>
+      <p className='mt-4 w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'>Are you a <span className='text-blu'>creator</span> who needs a way to get funds from their loyal fans or you just need to raise funds for your <span className='text-blu'>campaign</span>?.</p>
+      <p className='mt-4 w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'><span className='text-blu'>Darate</span> is a crowdfunding platform that allows you to do so, you can also support your favorite creators or if you're just looking to help those in need and support their campaign this is the right platform for you, built on the blockchain and fully powered by the Fantom Network.</p>
+      <CustomButton btnType='button' styles='hover:scale-110 transition-all duration-300 ease-in-out shadow ml-[2rem] bg-dark mt-[2rem] text-base md:text-[1.4rem]' title='Create a campaign now!' handleClick={() => router.push("/createCampaign")} />
       {/* categories */}
-      <div className="categories mt-[4rem]">
+      <div className="categories mt-[6rem]">
         <h2 className='text-2xl heading mb-[2rem]'>Select Campaign Category 🔥</h2>
         <div className="first grid grid-cols-1 md:grid-cols-[60%_38%] gap-4 mb-[2rem]">
           {/* education */}
@@ -68,8 +70,8 @@ const Home: NextPage = () => {
       </div>
       {/* Creator Section */}
       <h2 className='heading text-[2rem] md:text-[3rem] mt-[5rem]'>Let's aid you <br /> in providing Funds <br /> for your favourite <br /> <span className='bg-blu text-black block px-4 w-max text-[3rem] md:text-[4rem] rounded-md'>Creator</span></h2>
-      <p className='mt-[3rem] w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'>Are you looking for a creator to help in their growth or you already have the <span className='text-blu'>id</span> of your favourite creator, begin exploring creators now.</p>
-      <CustomButton btnType='button' styles='shadow ml-[2rem] bg-dark mt-[2rem] text-base md:text-[1.4rem]' title='Explore Creators' handleClick={() => router.push("/creators")} />
+      <p className='mt-[3rem] w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'>Are you looking for a creator to aid their growth or you already have the <span className='text-blu'>id</span> of your favourite <span className='text-blu'>creator</span>, begin exploring creators now.</p>
+      <CustomButton btnType='button' styles='hover:scale-110 transition-all duration-300 ease-in-out shadow ml-[2rem] bg-dark mt-[2rem] text-base md:text-[1.4rem]' title='Explore Creators' handleClick={() => router.push("/creators")} />
       {/* faq */}
       <Faq />
     </div>

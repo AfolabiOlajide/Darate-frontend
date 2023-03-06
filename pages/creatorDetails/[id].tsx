@@ -37,7 +37,9 @@ const CreatorDetails = () => {
     });
 
     const fetchCampaign = async () => {
+        setIsLoading(true)
         const data = await getCreatorCampaigns();
+        setIsLoading(false)
 
         const filteredCampaign = data.filter((campaign: CreatorCampignProp) => campaign.pId.toString() == id);
         setCampaign({

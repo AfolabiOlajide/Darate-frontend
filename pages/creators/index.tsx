@@ -1,27 +1,27 @@
 import React, { useState, useEffect } from 'react'
-import DisplayCreatorCampaigns from '../components/DisplayCreatorCampaigns';
-import { useAppContext } from '../context';
-import Loader from '../components/Loader';
-import { CreatorCampignProp } from '../utils';
-import DisplaySingleCreator from '../components/DisplaySingleCreator';
+import DisplayCreatorCampaigns from '../../components/DisplayCreatorCampaigns';
+import { useAppContext } from '../../context';
+import Loader from '../../components/Loader';
+import { CreatorCampignProp } from '../../utils';
+import DisplaySingleCreator from '../../components/DisplaySingleCreator';
 
 const Creators = () => {
     const [ isLoading, setIsLoading ] = useState(false);
     const [creatorCampaigns, setCreatorCampaigns] = useState([]);
     const [singleCreator, setSingleCreator] = useState([]);
-    const [creatorId, setCreatorId] = useState();
+    const [creatorId, setCreatorId] = useState("");
     const { address, contract, getCreatorCampaigns } = useAppContext();
 
-    const getSingleCreator = () => {
-        const filteredCreator = creatorCampaigns.filter((campaign: CreatorCampignProp) => campaign.pId === Number(creatorId));
-
-        setSingleCreator(filteredCreator)
-    }
-
     const handleFormInputChange = (e: any) => {
-        console.log(e.target.value)
+        if(e.target.value === ""){
+            setSingleCreator([])
+        }else{
+        const filteredCreator = creatorCampaigns.filter((campaign: CreatorCampignProp) => campaign.pId == Number(e.target.value));
+        console.log(filteredCreator)
+        setSingleCreator(filteredCreator);
+        }
+
         setCreatorId(e.target.value)
-        getSingleCreator()
     }
 
     const fetchCampaigns = async () => {
@@ -46,15 +46,16 @@ const Creators = () => {
                 onChange={(e) => handleFormInputChange(e)} />
             </div>
             
-            { creatorId ? (
+            { (singleCreator.length === 0 && creatorId.length === 0) ? (
+                <DisplayCreatorCampaigns
+                title="All Creators"
+                isLoading={isLoading}
+                campaigns={creatorCampaigns} />
+            ) : (
                 <DisplaySingleCreator 
                 isLoading={isLoading} 
                 campaigns={singleCreator} />
-            ) : (
-                <DisplayCreatorCampaigns
-            title="All Creators"
-            isLoading={isLoading}
-            campaigns={creatorCampaigns} />
+                
             ) }
             
         </div>

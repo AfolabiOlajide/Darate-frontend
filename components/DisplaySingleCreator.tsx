@@ -28,7 +28,7 @@ const DisplaySingleCreator = ({ isLoading, campaigns }: DisplaySingleCreatorProp
             )}
 
             {!isLoading && campaigns.length === 0 && (
-            <p className="font-epilogue font-semibold text-base md:text-[1.5rem] leading-[30px] text-[#818183]">
+            <p className="text-center w-full font-semibold text-base md:text-[1.5rem] leading-[30px] text-[#818183]">
                 There's no creator with this id
             </p>
             )}
