@@ -84,7 +84,7 @@ const CampaignDetails = () => {
     return (
         <div>
         {isLoading && <Loader text='Transaction in progress' />}
-        <div className="back -mt-[2rem] w-max" onClick={() => router.back()}>
+        <div className="back -mt-[2rem] w-max cursor-pointer" onClick={() => router.back()}>
             <FiArrowLeft className='w-[2rem] h-[2rem]' />
         </div>
         <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">

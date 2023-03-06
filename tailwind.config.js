@@ -22,7 +22,8 @@ module.exports = {
         orang: "#FAF2B1",
         health: "#FEDEFF",
         nature: "#E3ACF9",
-        tech: "#B9F3FC"
+        tech: "#B9F3FC",
+        dark: "#1c1c24"
       }
     },
   },

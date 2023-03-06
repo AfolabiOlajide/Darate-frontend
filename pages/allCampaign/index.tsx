@@ -4,6 +4,8 @@ import DisplayCreatorCampaigns from '../../components/DisplayCreatorCampaigns';
 import { useAppContext } from '../../context';
 import { RotateSpinner } from "react-spinners-kit";
 import Loader from '../../components/Loader';
+import Link from 'next/link';
+import CategoryNav from '../../components/CategoryNav';
 
 const AllCampaigns = () => {
     const [ isLoading, setIsLoading ] = useState(false);
@@ -17,8 +19,6 @@ const AllCampaigns = () => {
         const data2 = await getCreatorCampaigns();
         setCampaigns(data);
         setCreatorCampaigns(data2);
-        console.log(campaigns)
-        console.log(creatorCampaigns)
         setIsLoading(false);
     }
 
@@ -29,6 +29,8 @@ const AllCampaigns = () => {
 
     return (
         <div>
+            {/* category list */}
+            <CategoryNav />
 
             {isLoading && <Loader text='Fetching Campaigns' />}
             <div className="flex flex-col gap-[3rem]">

@@ -9,7 +9,7 @@ const FundCard = ({ owner, title, description, category, target, deadline, amoun
     const remainingDays = daysLeft(deadline);
     
     return (
-        <div className={`sm:w-[288px] w-full rounded-[15px] ${category === "HealthCare" ? "bg-health" : category === "Nature" ? "bg-nature" : category === "Tech" ? "bg-tech" : category === "Education" ? "bg-orang" :  "bg-[#1c1c24]"} bg-[#1c1c24] cursor-pointer`} onClick={handleClick}>
+        <div className={`sm:w-[288px] w-full rounded-[15px] ${category === "HealthCare" ? "bg-health" : category === "Nature" ? "bg-nature" : category === "Tech" ? "bg-tech" : category === "Education" ? "bg-orang" :  "bg-dark"} cursor-pointer`} onClick={handleClick}>
         <img src={image} alt="fund" className="w-full h-[210px] md:h-[158px] object-cover rounded-t-[10px]"/>
 
         <div className="flex flex-col p-4">
