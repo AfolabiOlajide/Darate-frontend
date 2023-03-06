@@ -39,7 +39,7 @@ body{
 
 
 .shadow{
-    box-shadow: 0 0 1rem #1EC49E,
-    0 0 2rem #1EC49E,
-    0 0 3rem #1EC49E;
+    box-shadow: 0 0 2rem #56ebc8,
+    0 0 10rem #7cecd2,
+    0 0 1rem #a5eada;
 }

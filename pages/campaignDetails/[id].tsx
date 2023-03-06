@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import truncateEthAddress from 'truncate-eth-address';
+import { useNetworkMismatch, } from "@thirdweb-dev/react";
 import { FiArrowLeft } from "react-icons/fi"; 
 // import { ethers } from 'ethers';
 
@@ -19,6 +19,7 @@ interface Donors{
 }
 
 const CampaignDetails = () => {
+    const isMismatched = useNetworkMismatch();
     const router = useRouter()
     const { id } = router.query;
     const { donate, getDonations, contract, address, getCampaigns } = useAppContext();
@@ -72,6 +73,9 @@ const CampaignDetails = () => {
     const handleDonate = async () => {
         if(!address){
             return toast.warn("Please connect wallet");
+        }
+        if(isMismatched){
+            return toast.warn("please switch network to Fantom testnet")
         }
         setIsLoading(true);
 

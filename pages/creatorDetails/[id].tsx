@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import truncateEthAddress from 'truncate-eth-address';
 import { FiArrowLeft } from "react-icons/fi"; 
+import { useNetworkMismatch, } from "@thirdweb-dev/react";
 // import { ethers } from 'ethers';
 
 import { useAppContext } from '../../context';
 import Loader from '../../components/Loader';
 import { CustomButton } from '../../components';
 import CountBox from '../../components/CountBox';
-import { calculateBarPercentage, daysLeft, CreatorCampignProp } from '../../utils';
+import { CreatorCampignProp } from '../../utils';
 import Pixel from "../../assets/pixel.png"
 import Image from 'next/image';
 import { toast } from 'react-toastify';
@@ -19,6 +19,7 @@ interface Donors{
 }
 
 const CreatorDetails = () => {
+    const isMismatched = useNetworkMismatch();
     const router = useRouter()
     const { id } = router.query;
     const { donateCreator, getCreatorDonations, contract, address, getCreatorCampaigns } = useAppContext();
@@ -64,6 +65,9 @@ const CreatorDetails = () => {
         if(!address){
             return toast.warn("Please connect wallet");
         }
+        if(isMismatched){
+            return toast.warn("please switch network to Fantom testnet")
+        }
         setIsLoading(true);
 
         await donateCreator(campaign.pId, amount); 
@@ -75,7 +79,7 @@ const CreatorDetails = () => {
     return (
         <div>
         {isLoading && <Loader text='Transaction in progress' />}
-        <div className="back -mt-[2rem] w-max" onClick={() => router.back()}>
+        <div className="back -mt-[2rem] w-max cursor-pointer" onClick={() => router.back()}>
             <FiArrowLeft className='w-[2rem] h-[2rem]' />
         </div>
         <div className="w-full flex md:flex-row flex-col mt-10 gap-[30px]">

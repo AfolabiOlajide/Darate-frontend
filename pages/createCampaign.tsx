@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useNetworkMismatch } from "@thirdweb-dev/react"
 import { ethers } from "ethers";
 import { BiMoneyWithdraw } from "react-icons/bi"
 
@@ -10,6 +11,7 @@ import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
 
 const CreateCampaign = () => {
+    const isMismatched = useNetworkMismatch();
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false);
     const { address, createCampaign, createCreatorCampaign } = useAppContext();
@@ -33,6 +35,9 @@ const CreateCampaign = () => {
 
         if(!address){
             return toast.warn("Please Connect your wallet");
+        }
+        if(isMismatched){
+            return toast.warn("Please switch the network to Fantom testnet");
         }
 
         checkIfImage(form.image, async(exists) => {

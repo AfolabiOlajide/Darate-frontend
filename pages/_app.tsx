@@ -1,6 +1,7 @@
 import '../styles/globals.css'
 import type { AppProps } from 'next/app';
-import { ThirdwebProvider, ChainId } from "@thirdweb-dev/react";
+import { ThirdwebProvider } from "@thirdweb-dev/react";
+import { FantomTestnet } from "@thirdweb-dev/chains"
 import { AppContextProvider } from "../context" 
 import MainLayout from '../components/MainLayout';
 import { ToastContainer } from 'react-toastify';
@@ -9,7 +10,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <ThirdwebProvider activeChain={ChainId.FantomTestnet} >
+    <ThirdwebProvider activeChain={FantomTestnet} >
       <AppContextProvider>
         <MainLayout>
           <Component {...pageProps} /> 
