@@ -11,7 +11,7 @@ const Profile = () => {
     const [ isLoading, setIsLoading ] = useState(false);
     const [userCampaigns, setUserCampaigns] = useState([]);
     const [userCreatorCampaign, setUserCreatorCampaign] = useState([]);
-    const { address, contract, getUserCampaigns, getUserCreatorCampaigns } = useAppContext();
+    const { contract, getUserCampaigns, getUserCreatorCampaigns } = useAppContext();
 
     const fetchCampaigns = async () => {
         setIsLoading(true);
@@ -19,8 +19,6 @@ const Profile = () => {
         const data2 = await getUserCreatorCampaigns();
         setUserCampaigns(data);
         setUserCreatorCampaign(data2);
-        console.log(userCampaigns)
-        console.log(userCreatorCampaign)
         setIsLoading(false);
     }
 

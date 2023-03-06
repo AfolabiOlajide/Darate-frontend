@@ -11,14 +11,13 @@ const Creators = () => {
     const [creatorCampaigns, setCreatorCampaigns] = useState([]);
     const [singleCreator, setSingleCreator] = useState([]);
     const [creatorId, setCreatorId] = useState("");
-    const { address, contract, getCreatorCampaigns } = useAppContext();
+    const { contract, getCreatorCampaigns } = useAppContext();
 
     const handleFormInputChange = (e: any) => {
         if(e.target.value === ""){
             setSingleCreator([])
         }else{
         const filteredCreator = creatorCampaigns.filter((campaign: CreatorCampignProp) => campaign.pId == Number(e.target.value));
-        console.log(filteredCreator)
         setSingleCreator(filteredCreator);
         }
 

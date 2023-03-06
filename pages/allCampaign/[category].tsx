@@ -14,8 +14,6 @@ const CampaignCategory = () => {
     const [campaigns, setCampaigns] = useState([]);
     const { contract, getCampaigns } = useAppContext();
 
-    console.log(category)
-
     const fetchCampaigns = async () => {
         setIsLoading(true);
         const data = await getCampaigns();

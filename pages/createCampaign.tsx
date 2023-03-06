@@ -56,8 +56,6 @@ const CreateCampaign = () => {
                 setForm({...form, image: ""});
             }
         })
-        
-        console.log(form)
     };
 
     const handleCampaignType = (e: any) => {

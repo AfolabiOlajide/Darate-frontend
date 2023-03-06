@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { useNetworkMismatch, } from "@thirdweb-dev/react";
 import { FiArrowLeft } from "react-icons/fi"; 
-// import { ethers } from 'ethers';
 
 import { useAppContext } from '../../context';
 import Loader from '../../components/Loader';
