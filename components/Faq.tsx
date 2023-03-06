@@ -6,30 +6,35 @@ import { BsArrowRightShort } from "react-icons/bs"
 function Faq() {
     const [faqs, setFaqs] = useState([
         {
-            question: "Question 1",
+            question: "How many creator campaign can I create",
             answer:
-                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa blanditiis animi natus dicta ipsam magni, aliquam delectus voluptatum. Animi, eius!",
+                "There is only one creator campaign allowed for each registered user.",
             open: true
         },
         {
-            question: "Question 2",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa blanditiis animi natus dicta ipsam magni, aliquam delectus voluptatum. Animi, eius!",
+            question: "How can i add the Fantom Network to my metamask",
+            answer: "Go to Chainlist.org then connect to your metamask wallet, search for Fantom and then click to add to metamask",
             open: false
         },
         {
             question:
-                "Question 3",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa blanditiis animi natus dicta ipsam magni, aliquam delectus voluptatum. Animi, eius!",
+                "Is there a limit to the number of campaigns I can create.",
+            answer: "No, there is no limit, you can create as many campaigns as you want.",
             open: false
         },
         {
-            question: "Question 4",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa blanditiis animi natus dicta ipsam magni, aliquam delectus voluptatum. Animi, eius!",
+            question: "How do I get a my image link",
+            answer: "For now we do not support the upload of images, you can search the web for the image you want using website like pexel and paste in the field available.",
             open: false
         },
         {
-            question: "Question 5",
-            answer: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa blanditiis animi natus dicta ipsam magni, aliquam delectus voluptatum. Animi, eius!",
+            question: "Are we paying a fee to use this platform",
+            answer: "You are not required to pay any fee, just create your campaign, share and enjoy your funds.",
+            open: false
+        },
+        {
+            question: "I love this platform, how do i donate towards the growth",
+            answer: "Thanks for the consideration we so much appreciate, you can click the link below the FAQs or search for the creator ID of 0",
             open: false
         }
     ]);
@@ -56,8 +61,8 @@ function Faq() {
             <div className="flex flex-col space-y-6">
                 { faqs.map((faq, i) => (
                     <div className="rounded-xl bg-dark shadow-lg shadow-teal/80" key={i}>
-                        <div className={`question ${faq.open ? "" : ""}  p-6 flex gap-4 justify-between items-center`}>
-                            <h1 className="font-bold text-White">{faq.question}</h1>
+                        <div className={`question ${faq.open ? "" : ""}  p-6 flex gap-4 justify-between items-center`} onClick={() => toggleFAQ(i)} >
+                            <h1 className="font-bold text-blu">{faq.question}</h1>
                             {faq.open ? <AiOutlineMinus className='text-blu cursor-pointer' onClick={() => toggleFAQ(i)} /> : <AiOutlinePlus className='text-blu cursor-pointer' onClick={() => toggleFAQ(i)}/>}
                         </div>
                         <div className={`answer ${faq.open? "block" : "hidden"} bg-lightTeal`}>

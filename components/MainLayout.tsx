@@ -46,7 +46,7 @@ const MainLayout = ({children}: ComponentProps) => {
         <>
             { isLoading && <Loader text='connecting wallet in progress'/> }
             <div className='bg-black text-white'>
-                <main className='w-full p-2 md:w-[80%] lg:w-[70%] mx-auto min-h-screen pb-[7rem] md:pb-6'>
+                <main className='w-full p-2 md:w-[90%] lg:w-[70%] mx-auto min-h-screen pb-[7rem] md:pb-6'>
                     <div className="top-bar mb-[4rem] flex justify-between items-center">
                         <Link href="/">
                             <h1 className='heading text-[3rem]'>Darate</h1>
@@ -54,6 +54,9 @@ const MainLayout = ({children}: ComponentProps) => {
                         <div className="nav-links hidden md:flex items-center gap-6">
                             <Link href="/allCampaign" className={`p-2 ${router.asPath === "/allCampaign" && "bg-blu/20" } rounded-md`}>
                                 <span className={`md:text-[1rem] lg:text-[1.5rem] heading ${router.asPath === "/allCampaign" ? "text-blu" : "text-slate-500"}`}>Campaigns</span>
+                            </Link>
+                            <Link href="/creators" className={`p-2 ${router.asPath === "/creators" && "bg-blu/20" } rounded-md`}>
+                                <span className={`md:text-[1rem] lg:text-[1.5rem] heading ${router.asPath === "/creators" ? "text-blu" : "text-slate-500"}`}>Creators</span>
                             </Link>
                             <Link href="/createCampaign" className={`p-2 ${router.asPath === "/createCampaign" && "bg-blu/20" } rounded-md`}>
                                 <span className={`md:text-[1rem] lg:text-[1.5rem] heading ${router.asPath === "/createCampaign" ? "text-blu" : "text-slate-500"}`}>Create</span>

@@ -32,7 +32,7 @@ const DisplayCampaigns = ({ title, isLoading, campaigns }: DisplayCampaignProps)
 
             {!isLoading && campaigns.length === 0 && (
             <p className="font-epilogue font-semibold text-[14px] leading-[30px] text-[#818183]">
-                You have not created any campigns yet
+                No campaign has been created under this category
             </p>
             )}
 

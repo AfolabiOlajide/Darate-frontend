@@ -14,7 +14,7 @@ const Home: NextPage = () => {
   const router = useRouter();
 
   return (
-    <div className="">
+    <div className="mb-[3rem]">
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -74,6 +74,7 @@ const Home: NextPage = () => {
       <CustomButton btnType='button' styles='hover:scale-110 transition-all duration-300 ease-in-out shadow ml-[2rem] bg-dark mt-[2rem] text-base md:text-[1.4rem]' title='Explore Creators' handleClick={() => router.push("/creators")} />
       {/* faq */}
       <Faq />
+      <CustomButton btnType='button' styles='hover:scale-110 transition-all duration-300 ease-in-out shadow ml-[2rem] bg-dark mt-[4rem] text-base md:text-[1.4rem]' title='Donate ❤️' handleClick={() => router.push("/creators/0")} />
     </div>
   )
 }
