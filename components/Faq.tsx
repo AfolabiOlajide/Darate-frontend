@@ -61,8 +61,8 @@ function Faq() {
             <div className="flex flex-col space-y-6">
                 { faqs.map((faq, i) => (
                     <div className="rounded-xl bg-dark shadow-lg shadow-teal/80" key={i}>
-                        <div className={`question ${faq.open ? "" : ""}  p-6 flex gap-4 justify-between items-center`} onClick={() => toggleFAQ(i)} >
-                            <h1 className="font-bold text-blu">{faq.question}</h1>
+                        <div className={`question ${faq.open ? "" : ""}  p-6 flex gap-4 justify-between items-center`}  >
+                            <h1 className="font-bold text-blu" onClick={() => toggleFAQ(i)}>{faq.question}</h1>
                             {faq.open ? <AiOutlineMinus className='text-blu cursor-pointer' onClick={() => toggleFAQ(i)} /> : <AiOutlinePlus className='text-blu cursor-pointer' onClick={() => toggleFAQ(i)}/>}
                         </div>
                         <div className={`answer ${faq.open? "block" : "hidden"} bg-lightTeal`}>
