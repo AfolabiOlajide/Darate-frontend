@@ -21,7 +21,7 @@ const Home: NextPage = () => {
       </Head>
 
       <h1 className='heading text-[2.7rem] md:text-[4rem]'>Hello, <br /> Are You Ready For <br /> <span className='text-blu block text-[3rem] md:text-[4rem]'>Crowdfunding?</span></h1>
-      <p className='mt-4 w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'>Are you a <span className='text-blu'>creator</span> who needs a way to get funds from their loyal fans or you just need to raise funds for your <span className='text-blu'>campaign</span>?.</p>
+      <p className='mt-4 w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'>Are you a <span className='text-blu'>creator</span> who needs a way to get funds from your loyal fans or you just need to raise funds for your <span className='text-blu'>campaign</span>?.</p>
       <p className='mt-4 w-[90%] md:w-[70%] text-base md:text-[1.7rem] leading-[1.7rem] md:leading-[2.5rem]'><span className='text-blu'>Darate</span> is a crowdfunding platform that allows you to do so, you can also support your favorite creators or if you're just looking to help those in need and support their campaign this is the right platform for you, built on the blockchain and fully powered by the Fantom Network.</p>
       <CustomButton btnType='button' styles='hover:scale-110 transition-all duration-300 ease-in-out shadow ml-[2rem] bg-dark mt-[2rem] text-base md:text-[1.4rem]' title='Create a campaign now!' handleClick={() => router.push("/createCampaign")} />
       {/* categories */}

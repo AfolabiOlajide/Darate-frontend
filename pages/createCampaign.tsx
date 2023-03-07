@@ -10,6 +10,7 @@ import { checkIfImage } from "../utils"
 import Loader from '../components/Loader';
 import { toast } from 'react-toastify';
 import Head from 'next/head';
+import { FiArrowLeft } from 'react-icons/fi';
 
 const CreateCampaign = () => {
     const isMismatched = useNetworkMismatch();
@@ -77,6 +78,9 @@ const CreateCampaign = () => {
             <title>Darate | Create Campaign</title>
             <link rel="icon" href="/fantom-ftm-logo.svg" />
         </Head>
+        <div className="back -mt-[2rem] mb-[3rem] w-max cursor-pointer" onClick={() => router.back()}>
+            <FiArrowLeft className='w-[2rem] h-[2rem]' />
+        </div>
         <div className='bg-[#1c1c24] flex justify-center items-center flex-col rounded-[10px] sm:p-10 p-4'>
             { isLoading && <Loader text='Transaction in progress' /> }
             <div className="flex justify-center items-center p-[16px] sm:min-w-[380px] bg-blu rounded-[10px]">
