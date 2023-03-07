@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { useRouter } from "next/router"
 import DisplayCampaigns from '../components/DisplayCampaign';
 import DisplayCreatorCampaigns from '../components/DisplayCreatorCampaigns';
 import { useAppContext } from '../context';
@@ -7,7 +6,6 @@ import Loader from '../components/Loader';
 import Head from 'next/head';
 
 const Profile = () => {
-    const router = useRouter()
     const [ isLoading, setIsLoading ] = useState(false);
     const [userCampaigns, setUserCampaigns] = useState([]);
     const [userCreatorCampaign, setUserCreatorCampaign] = useState([]);

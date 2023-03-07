@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
-import { useNetworkMismatch } from "@thirdweb-dev/react"
+import { useNetworkMismatch, useNetwork } from "@thirdweb-dev/react"
 import { ethers } from "ethers";
 import { BiMoneyWithdraw } from "react-icons/bi"
 
@@ -13,6 +13,7 @@ import Head from 'next/head';
 
 const CreateCampaign = () => {
     const isMismatched = useNetworkMismatch();
+    const [{ data, error, loading }, ] = useNetwork();
     const router = useRouter()
     const [isLoading, setIsLoading] = useState(false);
     const { address, createCampaign, createCreatorCampaign } = useAppContext();
@@ -45,14 +46,21 @@ const CreateCampaign = () => {
             if(exists){
                 setIsLoading(true);
                 if(CampaignType === "normal"){
-                    await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) });
+                    await createCampaign({ ...form, target: ethers.utils.parseUnits(form.target, 18) }).catch(() => {
+                        router.push('/createCampaign');
+                        toast.error("an error occurred");
+                    });
                 }else if(CampaignType === "creator"){
-                    await createCreatorCampaign({ ...form})
+                    await createCreatorCampaign({ ...form}).catch(() => {
+                        router.push('/createCampaign');
+                        toast.error("an error occurred");
+                    })
                 }
                 setIsLoading(false);
                 router.push('/profile');
+                toast.error("an error occurred");
             }else{
-                alert("provide a valid Image url");
+                toast.warn("provide a valid Image url");
                 setForm({...form, image: ""});
             }
         })

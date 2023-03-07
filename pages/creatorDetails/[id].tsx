@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import { FiArrowLeft } from "react-icons/fi"; 
-import { useNetworkMismatch, } from "@thirdweb-dev/react";
+import { useNetwork, useNetworkMismatch, } from "@thirdweb-dev/react";
 
 import { useAppContext } from '../../context';
 import Loader from '../../components/Loader';
@@ -19,6 +19,7 @@ interface Donors{
 
 const CreatorDetails = () => {
     const isMismatched = useNetworkMismatch();
+    const [{ data, error, loading }, ] = useNetwork();
     const router = useRouter()
     const { id } = router.query;
     const { donateCreator, getCreatorDonations, contract, address, getCreatorCampaigns } = useAppContext();
@@ -71,7 +72,15 @@ const CreatorDetails = () => {
         }
         setIsLoading(true);
 
-        await donateCreator(campaign.pId, amount); 
+        await donateCreator(campaign.pId, amount).catch(() => {
+            router.push("/allCampaign")
+            toast.error("an error occurred")
+        });
+        
+        if(error){
+            router.push("/allCampaign");
+            toast.error('an error ocurred')
+        }
 
         router.push(`/allCampaign`);
         setIsLoading(false);

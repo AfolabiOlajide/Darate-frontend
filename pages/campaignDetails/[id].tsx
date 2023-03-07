@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import { useNetworkMismatch, } from "@thirdweb-dev/react";
+import { useNetworkMismatch, useNetwork } from "@thirdweb-dev/react";
 import { FiArrowLeft } from "react-icons/fi"; 
 
 import { useAppContext } from '../../context';
@@ -61,8 +61,6 @@ const CampaignDetails = () => {
 
     const fetchDonators = async () => {
         const data = await getDonations(id);
-
-        console.log(data)
         setDonators(data);
     }
 
@@ -80,7 +78,10 @@ const CampaignDetails = () => {
         }
         setIsLoading(true);
 
-        await donate(campaign.pId, amount); 
+        await donate(campaign.pId, amount).catch(() => {
+            router.push('/allCampaign');
+            toast.error("an error occured");
+        });
 
         router.push(`/allCampaign`);
         setIsLoading(false);

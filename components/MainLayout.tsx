@@ -13,6 +13,7 @@ import { useNetworkMismatch, useDisconnect, } from "@thirdweb-dev/react";
 import { useAppContext } from '../context';
 import Loader from './Loader';
 import { toast } from 'react-toastify';
+import CustomButton from './CustomButton';
 
 const MainLayout = ({children}: ComponentProps) => {
     const isMismatched = useNetworkMismatch();
@@ -67,16 +68,20 @@ const MainLayout = ({children}: ComponentProps) => {
                             </Link>
                         </div>
                         {/* button */}
-                        <div className="btn block bg-blu p-2 rounded-md cursor-pointer" onClick={() => {
+                        <CustomButton btnType='button' styles='hover:scale-110 transition-all duration-300 ease-in-out shadow bg-dark  text-base md:text-[1.4rem]' title={address ? truncateEthAddress(address) : "Connect Wallet"} handleClick={() => {
+                            if(address) disconnectWallet()
+                            else connectToMetamask()
+                        }}/>
+                        {/* <div className="btn block bg-blu p-2 rounded-md cursor-pointer" onClick={() => {
                                 if(address) disconnectWallet()
                                 else connectToMetamask()
                             }}>
                             <span className='text-black heading font-bold md:text-[1rem] lg:text-[1.5rem]'>{address ? truncateEthAddress(address) : "Connect Wallet"}</span>
-                        </div>
+                        </div> */}
                     </div>
                     {children}
                 </main>
-                <nav className="side-bar md:hidden bg-ash/60 backdrop-blur-[2rem] fixed bottom-1 left-1 right-1 p-4 h-max rounded-[1rem] flex flex-row gap-2 md:flex-col items-center justify-center">
+                <nav className="side-bar md:hidden bg-ash/60 backdrop-blur-[2rem] fixed bottom-0 left-0 right-0 p-4 h-max flex flex-row gap-2 md:flex-col items-center justify-center">
                     <div className="flex flex-row gap-[1.5rem]">
                         <Link href="/" className={`p-2 ${router.asPath === "/" && "bg-blu/20" } rounded-md`}>
                             <BsGrid className={`text-[2rem] ${router.asPath === "/" ? "text-blu" : "text-slate-300"}`}/>
@@ -85,10 +90,10 @@ const MainLayout = ({children}: ComponentProps) => {
                             <GoMegaphone className={`text-[2rem] ${router.asPath === "/allCampaign" ? "text-blu" : "text-slate-300"}`}/>
                         </Link>
                         <Link href="/creators" className={`p-2 ${router.asPath === "/creators" && "bg-blu/20" } rounded-md`}>
-                            <IoIosPeople className={`text-[2rem] ${router.asPath === "/creators" ? "text-blu" : "text-slate-300"}`}/>
+                            <IoIosPeople className={`text-[2.5rem] ${router.asPath === "/creators" ? "text-blu" : "text-slate-300"}`}/>
                         </Link>
                         <Link href="/createCampaign" className={`p-2 ${router.asPath === "/createCampaign" && "bg-blu/20" } rounded-md`}>
-                            <FaPen className={`text-[2rem] ${router.asPath === "/createCampaign" ? "text-blu" : "text-slate-300"}`}/>
+                            <FaPen className={`text-[1.8rem] ${router.asPath === "/createCampaign" ? "text-blu" : "text-slate-300"}`}/>
                         </Link>
                         <Link href="/profile" className={`p-2 ${router.asPath === "/profile" && "bg-blu/20" } rounded-md`}>
                             <TiUserOutline className={`text-[2rem] ${router.asPath === "/profile" ? "text-blu" : "text-slate-300"}`}/>
