@@ -68,7 +68,7 @@ const CreatorDetails = () => {
             return toast.warn("Please connect wallet");
         }
         if(isMismatched){
-            return toast.warn("please switch network to Fantom testnet")
+            return toast.warn("please switch to the Fantom network")
         }
         setIsLoading(true);
 
