@@ -40,7 +40,7 @@ const CreateCampaign = () => {
             return toast.warn("Please Connect your wallet");
         }
         if(isMismatched){
-            return toast.warn("please switch to the Fantom network");
+            return toast.warn("please switch to the Scroll Sepolia network");
         }
 
         checkIfImage(form.image, async(exists) => {

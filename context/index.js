@@ -7,7 +7,7 @@ import { EditionMetadataWithOwnerOutputSchema } from '@thirdweb-dev/sdk';
 const appContext = createContext();
 
 export const AppContextProvider = ({ children }) => {
-    const { contract } = useContract('0x94031981529CE412087aAC46Cb43ccd6D6f7e19C'); // replace with smart contract address 
+    const { contract } = useContract('0xD9b1C68DbAD8F5607Cf2468FF46D40e998DF6793'); // replace with smart contract address 
     const { mutateAsync: createCampaign } = useContractWrite(contract, 'createCampaign');
     const { mutateAsync: createCreatorCampaign } = useContractWrite(contract, 'createCreatorCampaign');
 

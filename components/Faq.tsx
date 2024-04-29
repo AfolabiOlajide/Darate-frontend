@@ -12,8 +12,8 @@ function Faq() {
             open: true
         },
         {
-            question: "How can i add the Fantom Network to my metamask",
-            answer: "Go to Chainlist.org then connect to your metamask wallet, search for Fantom and then click to add to metamask",
+            question: "How can i add the Scroll Sepolia Network to my metamask",
+            answer: "Go to Chainlist.org then connect to your metamask wallet, search for Scroll Sepolia and then click to add to metamask",
             open: false
         },
         {
@@ -61,7 +61,7 @@ function Faq() {
             <div className="flex flex-col space-y-6">
                 { faqs.map((faq, i) => (
                     <div className="rounded-xl bg-dark shadow-lg shadow-teal/80" key={i}>
-                        <div className={`question ${faq.open ? "" : ""}  p-6 flex gap-4 justify-between items-center`}  >
+                        <div className={`question ${faq.open ? "" : ""}  p-6 flex gap-4 justify-between items-center cursor-pointer`} onClick={() => toggleFAQ(i)}  >
                             <h1 className="font-bold text-blu" onClick={() => toggleFAQ(i)}>{faq.question}</h1>
                             {faq.open ? <AiOutlineMinus className='text-blu cursor-pointer' onClick={() => toggleFAQ(i)} /> : <AiOutlinePlus className='text-blu cursor-pointer' onClick={() => toggleFAQ(i)}/>}
                         </div>

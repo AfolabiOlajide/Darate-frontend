@@ -38,7 +38,7 @@ const MainLayout = ({children}: ComponentProps) => {
 
     useEffect(() => {
         if(isMismatched){
-            toast.warn("please switch to the Fantom Network")
+            toast.warn("please switch to the Scroll Sepolia Network")
         }
 
     }, [address])
